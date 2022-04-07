@@ -12,7 +12,7 @@ public class Tasa {
         // Podria hacer una clase para marca que heredara de tarjeta
         // Tendria que instanciar una clase distinta para cada marca 
         LocalDate now = LocalDate.now();
-        int year = now.getYear();
+        int year = now.getYear() % 100;
         int month = now.getMonthValue();
         int dayofMonth = now.getDayOfMonth();
         
@@ -26,12 +26,12 @@ public class Tasa {
         }
     }
 
-    public float valor(float valorOperacion){
+    public float importe(float valorOperacion){
         
         float result = (porcentaje * valorOperacion) / 100;
-        
+        float importe = valorOperacion + result;
 
-        return result;
+        return importe;
     }
     
 }
