@@ -5,13 +5,14 @@ import java.time.format.DateTimeFormatter;
 
 public class Tarjeta {
     int numero;
-    Tasa tasa;
+    public Tasa tasa;
     String vencimiento; // MM/yyyy
-    String marca;
+    public String marca;
     String cardHolder;
 
 
-    public Tarjeta(int numero, String vencimiento, String cardHolder) {
+    public Tarjeta(int numero, String vencimiento, String cardHolder, String marca) {
+        this.marca = marca;
         this.numero = numero;
         this.vencimiento = vencimiento;
         this.cardHolder = cardHolder;
@@ -22,16 +23,18 @@ public class Tarjeta {
     public boolean esValida(){
         YearMonth now = YearMonth.now();
         DateTimeFormatter format = DateTimeFormatter.ofPattern("MM/yyyy");
+        
         try{
-            
-            // si llega a estar mal el formato de fecha
+                       
             YearMonth ym = YearMonth.parse(vencimiento, format);
             boolean comparacion = now.isBefore(ym);
             
             return comparacion;
-            
+          
+        // si llega a estar mal el formato de fecha    
         }catch (Exception e){
             
+            System.out.println("Formato Erroneo");
             return false;
         
         }
@@ -52,6 +55,32 @@ public class Tarjeta {
 
     // Identifica si es distinta a otra tarjeta
     public boolean sonDistintas(Tarjeta comparada){
+        String[] comparadaInfo;
+        String[] thisInfo;
+        
+        // Con que se puede acceder a info() se va a poder acceder a los indices del array
+        try{
+            comparadaInfo = comparada.info();
+            thisInfo = this.info();
+
+            for(int i=0;i < thisInfo.length;i++){
+
+                if (thisInfo[i].equals(comparadaInfo[i])) {
+                    continue;
+                }else{
+                    return false;
+                }
+
+            }
+    
+            return true;
+
+        }catch(Exception e){
+
+            System.out.println("La informacion es erronea");
+            return false;
+        }
+
 
     }
 
