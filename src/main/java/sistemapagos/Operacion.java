@@ -16,12 +16,13 @@ public class Operacion {
         if(this.valor < 1000 && this.valor > 0 && this.tarjeta.esValida()){
             return true;
         }else{
-            return false;
+            throw new ArithmeticException("El monto debe ser menor a 1000");
         }
     }
 
+    // A QUE SE REFIERE CON IMPORTE tasa+valor?
     public String tasa(){
-        return (tarjeta.marca + " " + tarjeta.tasa.valor(valor));
+        return (tarjeta.marca + " Importe total: " + tarjeta.tasa.importe(valor));
     }
 
 }
