@@ -4,14 +4,14 @@ import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;
 
 public class Tarjeta {
-    long numero;
+    String numero;
     public Tasa tasa;
     String vencimiento; // MM/yyyy
     public String marca;
     public String cardHolder;
 
 
-    public Tarjeta(long numero2, String vencimiento, String cardHolder, String marca) {
+    public Tarjeta(String numero2, String vencimiento, String cardHolder, String marca) {
         this.marca = marca;
         this.numero = numero2;
         this.vencimiento = vencimiento;
@@ -47,7 +47,7 @@ public class Tarjeta {
         String[] info = new String[4];
         info[0] = marca;
         info[1] = cardHolder;
-        info[2] = Long.toString(numero);
+        info[2] = numero;
         info[3] = vencimiento;
 
         return info;

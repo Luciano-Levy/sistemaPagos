@@ -76,7 +76,7 @@ public class SistemaPagos {
     public static Tarjeta obtenerTarjeta(){
         try{
             String marca = Ihelper.getUserInput("Marca (VISA, NARA, AMEX): ").toUpperCase();
-            long numero = Long.parseLong(Ihelper.getUserInput("Numero: "));
+            String numero = Ihelper.getUserInput("Numero: ");
             String cardHolder = Ihelper.getUserInput("Nombre Completo: ");
             String vencimiento = Ihelper.getUserInput("Vencimiento (MM/yyyy): ");
 
